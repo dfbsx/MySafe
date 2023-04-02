@@ -1,9 +1,9 @@
 import React from 'react'
 import './LoginInput.css';
 
-function LoginInput({inputText}) {
+function LoginInput({inputText, type}) {
   return (
-    <div><input placeholder={inputText}/></div>
+    <div><input placeholder={inputText} type={type}/></div>
   )
 }
 
