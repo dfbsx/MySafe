@@ -2,7 +2,7 @@
     flex:1;
     display: flex;
 }
-.site{
+.loginSite{
     background-size: contain;
     flex:1;
     background: 
@@ -10,5 +10,35 @@
    -webkit-linear-gradient(-30deg,transparent 45%, #FDFDFD 0%),
    url('/public/background2.jpg');
    background-size: 100% 100%;
-  
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+  }
+
+  .loginForm{
+    margin-right: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  p{
+    font-size: 40pt;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  button{
+    width: 400px;
+    background-color: #329DFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    letter-spacing: 1.5px;
+    color:#FFFFFF;
+    font-size: x-large;
+    font-weight:lighter;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 3px;
+margin-top: 30px;
   }

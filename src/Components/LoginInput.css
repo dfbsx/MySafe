@@ -1,0 +1,13 @@
+input {
+    background-color:transparent;
+    border: 0px solid;
+    border-bottom: 1px solid;
+    width: 400px;
+    font-size:large;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+}
+input:focus {
+    outline:none;
+}
