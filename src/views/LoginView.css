@@ -1,0 +1,14 @@
+.loginView{
+    flex:1;
+    display: flex;
+}
+.site{
+    background-size: contain;
+    flex:1;
+    background: 
+    -webkit-linear-gradient(transparent, rgba(135, 60, 255, 0.0) 0%),
+   -webkit-linear-gradient(-30deg,transparent 45%, #FDFDFD 0%),
+   url('/public/background2.jpg');
+   background-size: 100% 100%;
+  
+  }
