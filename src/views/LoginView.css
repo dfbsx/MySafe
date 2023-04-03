@@ -7,7 +7,7 @@
     flex:1;
     background: 
     -webkit-linear-gradient(transparent, rgba(135, 60, 255, 0.0) 0%),
-   -webkit-linear-gradient(-30deg,transparent 45%, #FDFDFD 0%),
+   -webkit-linear-gradient(-30deg,transparent 45%, #F4F6F9 0%),
    url('/public/background2.jpg');
    background-size: 100% 100%;
    display: flex;
@@ -42,3 +42,8 @@
 border-radius: 3px;
 margin-top: 30px;
   }
+
+  @media screen and (max-width: 840px) {
+    .loginSite{
+      background: #FDFDFD;
+    }}

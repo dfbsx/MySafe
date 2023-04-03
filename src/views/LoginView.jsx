@@ -2,12 +2,15 @@ import React, {useState} from 'react'
 import Header from '../Components/Header';
 import './LoginView.css';
 import LoginInput from '../Components/LoginInput';
+import { Link } from "react-router-dom";
+import MainPage from './MainPage';
 
 function LoginView() {
   const [user,setUser] = useState({
     login: "",
     password: "",
   })
+  const [redirect, setRedirect] = useState(true);
 
   const handleLogin = () => {
     if(user.login === "user" && user.password === "haslo"){
@@ -15,11 +18,14 @@ function LoginView() {
     }
     else{
       console.log("blad");console.log(user.login);console.log(user.password)
+      setRedirect(false);
     }
   }
 
   return (
-    <div className='loginView'>
+    <nav className='loginView'>
+
+      
         <Header/>
         <div className="loginSite">
             <form className="loginForm" onSubmit={(event)=>event.preventDefault()}>
@@ -29,7 +35,8 @@ function LoginView() {
                 <button onClick={handleLogin}>ZALOGUJ</button>
             </form>
         </div>
-    </div>
+
+    </nav>
   )
 }
 

@@ -1,25 +1,20 @@
 import './App.css';
 import LoginView from './views/LoginView';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from './views/MainPage';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LoginView />,
-  },
-  {
-    path: "/home",
-    element: <MainPage />,
-  },
-]);
+
 function App() {
   return (
     <div className="App">
-      <LoginView/>
+      <BrowserRouter>
+      <Routes>
+      <Route path="/">
+          <Route index element={<LoginView />} />
+          <Route path="home" element={<MainPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
