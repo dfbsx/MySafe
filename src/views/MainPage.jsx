@@ -4,6 +4,8 @@ import './MainPage.css';
 import MessageTab from '../Components/MessageTab';
 import MessageDesc from '../Components/MessageDesc';
 
+
+
 function MainPage({user}) {
 
   const [messages, setMessages] = useState([{

@@ -3,6 +3,7 @@ import LoginView from './views/LoginView';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from './views/MainPage';
 import { useState } from 'react';
+import MessageView from './views/MessageView';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Route path="/">
           <Route index element={<LoginView user={user} setUser={setUser}/>} />
           <Route path="home" element={<MainPage user={user}/>} />
+          <Route path="home/messages/:messagesId" element={<MessageView/>} />
         </Route>
       </Routes>
     </BrowserRouter>

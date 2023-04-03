@@ -1,0 +1,10 @@
+.messageView{
+    flex:1;
+    display: flex;
+}
+
+.messageSite{
+    flex:1;
+    padding: 40px 64px;
+    background-color: #F4F6F9;
+}
