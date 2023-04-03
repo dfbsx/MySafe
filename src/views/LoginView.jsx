@@ -46,7 +46,7 @@ function LoginView() {
                 {loginError===true?<p className='loginError'>Nieprawidłowy login lub/i hasło</p>:null}
                 <LoginInput inputText="Login" type="text" value={user.login} onChange={(e)=>setUser({...user, login:e.target.value})}/>
                 <LoginInput inputText="Hasło" type="password" value={user.password} onChange={(e)=>setUser({...user, password:e.target.value})}/>
-                {redirect===true?<Link to="/home"><button onClick={handleLogin}>ZALOGUJ</button></Link>:<Link to="/"><button onClick={handleLogin}>ZALOGUJ</button></Link>}
+                {redirect===true?<Link to="/home"><button className="loginButton" onClick={handleLogin}>ZALOGUJ</button></Link>:<Link to="/"><button className="loginButton" onClick={handleLogin}>ZALOGUJ</button></Link>}
             </form>
         </div>
     </nav>

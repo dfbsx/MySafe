@@ -1,16 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
 import './header.css';
+import { Link } from "react-router-dom";
 
-function Header() {
-    const [buttonVisible,setButtonVisible]=useState(false);
+function Header({buttonVisible}) {
   return (
     <div className="headerBackground">
     <div className="logo">
     <img className="logoPNG" src='/logo.png'/>
     <div>MySafe</div>
     </div>
-    {buttonVisible==true?
-    <button>login</button>:null}
+    {buttonVisible===true?
+    <Link to="/"><button className='logoutButton'>Wyloguj</button></Link>:null}
     </div>
   )
 }

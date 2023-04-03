@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Header from '../Components/Header'
 
 function MainPage() {
+    const [buttonVisible,setButtonVisible]=useState(true);
   return (
-    <div>MainPage</div>
+    <div>
+        <Header buttonVisible={buttonVisible}/>
+    </div>
   )
 }
 
