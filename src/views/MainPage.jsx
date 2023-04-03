@@ -7,29 +7,51 @@ import MessageDesc from '../Components/MessageDesc';
 function MainPage({user}) {
 
   const [messages, setMessages] = useState([{
+    id:1,
     date: "01.01.2000",
     title: "Nowa wiadomość",
   },
   {
+    id:2,
     date: "01.01.2000",
     title: "Wiadomość 1",
   },
   {
+    id:3,
     date: "01.01.2000",
     title: "Podaj hasło",
   },
   {
+    id:4,
     date: "01.01.2000",
     title: "Odczytaj mnie",
   },
   {
+    id:5,
     date: "01.01.2000",
     title: "Halo?",
+  },
+  {
+    id:6,
+    date: "01.01.2000",
+    title: "Odczytaj mnie",
+  },
+  {
+    id:7,
+    date: "01.01.2000",
+    title: "Odczytaj mnie",
+  },
+  {
+    id:8,
+    date: "01.01.2000",
+    title: "Odczytaj mnie",
   },]);
+  
 
   const [buttonVisible,setButtonVisible]=useState(true);
 
   const Messages = messages?.map((item)=>(<MessageTab
+    id={item.id}
     date={item.date}
     title={item.title}
   />));
