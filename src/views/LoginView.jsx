@@ -37,7 +37,7 @@ function LoginView({user,setUser}) {
         <Header/>
         <div className="loginSite">
             <form className="loginForm" onSubmit={(event)=>event.preventDefault()}>
-                <p>Zaloguj się</p>
+                <p className='loginInto'>Zaloguj się</p>
                 {loginError===true?<p className='loginError'>Nieprawidłowy login lub/i hasło</p>:null}
                 <LoginInput inputText="Login" type="text" value={user.login} onChange={(e)=>setUser({...user, login:e.target.value})}/>
                 <LoginInput inputText="Hasło" type="password" value={user.password} onChange={(e)=>setUser({...user, password:e.target.value})}/>

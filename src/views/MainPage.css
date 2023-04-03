@@ -1,5 +1,12 @@
+.mainPage{
+    flex:1;
+    display: flex;
+}
+
 .mainSite{
+    flex:1;
     padding: 40px 64px;
+    background-color: #F4F6F9;
 }
 
 .welcomeText{
@@ -7,9 +14,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .username{
     color: #329DFF;
     font-size: 24px;
+}
+
+.messagesTable{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }

@@ -1,0 +1,24 @@
+.messageRowDesc{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 16px;
+}
+
+.tableDateDesc{
+    font-size: 16px;
+    flex:1;
+}
+
+.tableMessageTitleDesc{
+    font-size: 16px;
+    flex:3;
+}
+
+.emptyDesc{
+    flex:1;
+}
