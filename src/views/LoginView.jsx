@@ -4,12 +4,7 @@ import './LoginView.css';
 import LoginInput from '../Components/LoginInput';
 import { Link } from "react-router-dom";
 
-function LoginView() {
-
-  const [user,setUser] = useState({
-    login: "",
-    password: "",
-  })
+function LoginView({user,setUser}) {
 
   const [redirect, setRedirect] = useState(false);
 
