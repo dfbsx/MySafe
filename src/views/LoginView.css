@@ -28,6 +28,14 @@
     letter-spacing: 2px;
   }
 
+  .loginError{
+    font-size: 14pt;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: red;
+    margin-top: -40px;
+  }
+
   button{
     width: 400px;
     background-color: #329DFF;
