@@ -1,0 +1,20 @@
+.algoRowDesc{
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: none;
+    margin-bottom: 16px;
+}
+
+.algoDesc{
+    font-size: 16px;
+    flex:1;
+}
+
+.algoName{
+    font-size: 16px;
+    flex:1;
+}

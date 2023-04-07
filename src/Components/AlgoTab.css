@@ -1,4 +1,4 @@
-.messageRow{
+.algoRow{
     display: flex;
     flex-direction: row;
     background-color: #FFFFFF;
@@ -8,29 +8,13 @@
     border: none;
 }
 
-.tableDate{
+.algoItem{
     font-size: 14px;
     flex:1;
 }
 
-.tableMessageTitle{
-    font-size: 16px;
-    flex:3;
-}
 
-.moreAboutMessage{
-    flex:1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.messageRow:hover{
+.algoRow:hover{
     scale:1.02;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-a{
-    text-decoration: none;
-    color: black;
 }
