@@ -55,3 +55,8 @@ margin-top: 30px;
     .loginSite{
       background: #FDFDFD;
     }}
+
+    .noAccount{
+      display: flex;
+      align-self: center;
+    }

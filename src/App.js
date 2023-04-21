@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from './views/MainPage';
 import { useState } from 'react';
 import MessageView from './views/MessageView';
+import RegisterView from './views/RegisterView';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
       <Route path="/">
           <Route index element={<LoginView user={user} setUser={setUser}/>} />
+          <Route path="register" element={<RegisterView/>} />
           <Route path="home" element={<MainPage user={user}/>} />
           <Route path="home/messages/:messagesId" element={<MessageView/>} />
         </Route>
