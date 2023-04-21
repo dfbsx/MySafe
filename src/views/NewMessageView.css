@@ -1,0 +1,21 @@
+@import url('https://fonts.cdnfonts.com/css/alegreya-sans-sc');
+.newMessagePage{
+    flex:1;
+    display: flex;
+}
+
+.newMessageSite{
+    display: flex;
+    flex-direction: column;
+    flex:1;
+    padding: 64px 64px;
+    background-color: #F4F6F9;
+}
+
+.newMessageHeader{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+

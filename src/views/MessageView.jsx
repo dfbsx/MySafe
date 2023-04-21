@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './MessageView.css';
 import Header from '../Components/Header';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MessageBox from '../Components/MessageBox';
 import AlgoDesc from '../Components/AlgoDesc';
 import AlgoTab from '../Components/AlgoTab';
