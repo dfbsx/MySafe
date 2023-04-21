@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 function RegisterView() {
   return (
-    <div className='loginView'>
+    <div className='registerView'>
     <Header/>
-    <div className="loginSite">
-        <form className="loginForm" >
-            <p className='loginInto'>Zarejestruj się</p>
+    <div className="registerSite">
+        <form className="registerForm" >
+            <p className='registerInto'>Zarejestruj się</p>
             <LoginInput inputText="Login" type="text" />
             <LoginInput inputText="Hasło" type="password" />
             <LoginInput inputText="Powtórz hasło" type="password" />

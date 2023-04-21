@@ -1,42 +1,35 @@
-.loginView{
+@import url('https://fonts.cdnfonts.com/css/alegreya-sans-sc');
+.registerView{
     flex:1;
     display: flex;
 }
-.loginSite{
+.registerSite{
     background-size: contain;
     flex:1;
     background: 
     -webkit-linear-gradient(transparent, rgba(135, 60, 255, 0.0) 0%),
    -webkit-linear-gradient(-30deg,transparent 45%, #F4F6F9 0%),
-   url('/public/background2.jpg');
+   url('/public/register.jpg');
    background-size: 100% 100%;
    display: flex;
    align-items: center;
    justify-content: flex-end;
   }
 
-  .loginForm{
+  .registerForm{
     margin-right: 10%;
     display: flex;
     flex-direction: column;
     gap: 30px;
   }
 
-  .loginInto{
+  .registerInto{
     font-size: 40pt;
     font-weight: 300;
     letter-spacing: 2px;
   }
 
-  .loginError{
-    font-size: 14pt;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: red;
-    margin-top: -40px;
-  }
-
-  .loginButton{
+  .registerButton{
     width: 400px;
     background-color: #329DFF;
     padding-top: 10px;
@@ -49,14 +42,10 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 3px;
 margin-top: 30px;
+
   }
 
   @media screen and (max-width: 840px) {
     .loginSite{
       background: #FDFDFD;
     }}
-
-    .noAccount{
-      display: flex;
-      align-self: center;
-    }
