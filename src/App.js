@@ -5,6 +5,7 @@ import MainPage from './views/MainPage';
 import { useState } from 'react';
 import MessageView from './views/MessageView';
 import RegisterView from './views/RegisterView';
+import NewMessageView from './views/NewMessageView';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route index element={<LoginView user={user} setUser={setUser}/>} />
           <Route path="register" element={<RegisterView/>} />
           <Route path="home" element={<MainPage user={user}/>} />
+          <Route path="newMessage" element={<NewMessageView/>}/>
           <Route path="home/messages/:messagesId" element={<MessageView/>} />
         </Route>
       </Routes>

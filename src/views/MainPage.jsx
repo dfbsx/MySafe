@@ -3,7 +3,8 @@ import Header from '../Components/Header'
 import './MainPage.css';
 import MessageTab from '../Components/MessageTab';
 import MessageDesc from '../Components/MessageDesc';
-
+import { AiOutlinePlus } from 'react-icons/ai';
+import { Link } from "react-router-dom";
 
 
 function MainPage({user}) {
@@ -64,7 +65,7 @@ function MainPage({user}) {
         <div className='mainSite'>
         <div className="pageHeader">
         <p className='welcomeText'>Witaj,&nbsp;<p className='username'>{user.login}</p>! Sprawdź swoje wiadomości:</p>
-        <button>Dodaj nową wiadomość</button>
+        <Link to="/newMessage"><button className="addMessage"><AiOutlinePlus style={{color: "#FFFFFF"}}/>Dodaj wiadomość</button></Link>
         </div>  
         <div className="messagesTable">
           <MessageDesc/>

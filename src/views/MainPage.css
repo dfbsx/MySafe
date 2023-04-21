@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/alegreya-sans-sc');
 .mainPage{
     flex:1;
     display: flex;
@@ -33,4 +34,22 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.addMessage{
+    background-color: #329DFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border: none;
+    letter-spacing: 1.5px;
+    color:#FFFFFF;
+    font-family: "Assistant";
+    font-weight: 400;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:8px;
 }
