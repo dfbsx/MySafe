@@ -61,8 +61,11 @@ function MainPage({user}) {
   return (
     <div className='mainPage'>
         <Header buttonVisible={buttonVisible}/>
-        <div className='mainSite'>  
+        <div className='mainSite'>
+        <div className="pageHeader">
         <p className='welcomeText'>Witaj,&nbsp;<p className='username'>{user.login}</p>! Sprawdź swoje wiadomości:</p>
+        <button>Dodaj nową wiadomość</button>
+        </div>  
         <div className="messagesTable">
           <MessageDesc/>
           {Messages}
