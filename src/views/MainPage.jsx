@@ -5,10 +5,22 @@ import MessageTab from '../Components/MessageTab';
 import MessageDesc from '../Components/MessageDesc';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import key from '../const'
 
 
 function MainPage() {
 
+  const navigate = useNavigate();
+  const [username, setUsername] = useState();
+  useEffect(() => {
+    const lsdata = JSON.parse(localStorage.getItem(key));
+    if (lsdata?.token) {
+      navigate("/home");
+    }
+    setUsername(lsdata.login)
+  },[]);
+  
   const [messages, setMessages] = useState([{
     id:1,
     date: "01.01.2000",
@@ -64,7 +76,7 @@ function MainPage() {
         <Header buttonVisible={buttonVisible}/>
         <div className='mainSite'>
         <div className="pageHeader">
-        <p className='welcomeText'>Witaj,&nbsp;<p className='username'></p>! Sprawdź swoje wiadomości:</p>
+        <p className='welcomeText'>Witaj,&nbsp;<p className='username'>{username}</p>! Sprawdź swoje wiadomości:</p>
         <Link to="/newMessage"><button className="addMessage"><AiOutlinePlus style={{color: "#FFFFFF"}}/>Dodaj wiadomość</button></Link>
         </div>  
         <div className="messagesTable">
