@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../Components/Header'
 import './MainPage.css';
 import MessageTab from '../Components/MessageTab';
@@ -7,7 +7,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 
 
-function MainPage({user}) {
+function MainPage() {
 
   const [messages, setMessages] = useState([{
     id:1,
@@ -64,7 +64,7 @@ function MainPage({user}) {
         <Header buttonVisible={buttonVisible}/>
         <div className='mainSite'>
         <div className="pageHeader">
-        <p className='welcomeText'>Witaj,&nbsp;<p className='username'>{user.login}</p>! Sprawdź swoje wiadomości:</p>
+        <p className='welcomeText'>Witaj,&nbsp;<p className='username'></p>! Sprawdź swoje wiadomości:</p>
         <Link to="/newMessage"><button className="addMessage"><AiOutlinePlus style={{color: "#FFFFFF"}}/>Dodaj wiadomość</button></Link>
         </div>  
         <div className="messagesTable">
