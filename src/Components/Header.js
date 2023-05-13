@@ -1,8 +1,12 @@
 import React from 'react'
 import './header.css';
 import { Link } from "react-router-dom";
+import key from '../const'
 
 function Header({buttonVisible}) {
+  const logout = () => {
+    localStorage.removeItem(key);
+  };
   return (
     <div className="headerBackground">
     <div className="logo">
@@ -10,7 +14,7 @@ function Header({buttonVisible}) {
     <div>MySafe</div>
     </div>
     {buttonVisible===true?
-    <Link to="/"><button className='logoutButton'>Wyloguj</button></Link>:null}
+    <Link to="/"><button className='logoutButton' onClick={logout}>Wyloguj</button></Link>:null}
     </div>
   )
 }
