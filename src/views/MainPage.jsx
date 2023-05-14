@@ -7,18 +7,25 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import key from '../const'
+import { getMessagesList } from '../crud/getMessagesList';
 
 
 function MainPage() {
 
   const navigate = useNavigate();
   const [username, setUsername] = useState();
+  const [messagesList,setMessagesList] = useState({});
   useEffect(() => {
     const lsdata = JSON.parse(localStorage.getItem(key));
     if (lsdata?.token) {
       navigate("/home");
+      setMessagesList(getMessagesList())
+      console.log(messagesList)
     }
-    setUsername(lsdata.login)
+    else {
+      navigate("/")
+    }
+    setUsername(lsdata?.login)
   },[]);
   
   const [messages, setMessages] = useState([{

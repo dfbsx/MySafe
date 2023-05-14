@@ -26,11 +26,11 @@ function RegisterView() {
 
   const handleRegister = () => {
     console.log(registerData)
-    register(registerData)
+    register(registerData.login,registerData.password,registerData.repeatedPassword)
       .then((resp) => {
         console.log("resp",resp);
-        localStorage.setItem(key, JSON.stringify({login:resp.username,token:resp.access}))
-        //navigate("/home");
+        localStorage.setItem(key, JSON.stringify({login:resp.data.username,token:resp.data.access}))
+        navigate("/home");
       })
       .catch((error) => {
         //alert("Wprowadzone dane są niepoprawne");
