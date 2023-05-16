@@ -10,9 +10,10 @@ function NewMessageView() {
   const navigate = useNavigate();
   useEffect(() => {
     const lsdata = JSON.parse(localStorage.getItem(key));
-    if (!lsdata?.token) {
-      navigate("/home");
+    if (!lsdata?.cookie) {
+      navigate("/");
     }
+
   });
   const [buttonVisible, setButtonVisible] = useState(true);
   const [newMessage, setNewMessage] = useState({
@@ -25,16 +26,14 @@ function NewMessageView() {
     createMessage(newMessage.title,newMessage.text)
       .then((resp) => {
         console.log(resp);
-        //localStorage.setItem(key,JSON.stringify({login:loginData.login,token:resp.data.access}));
-        //navigate("/home");
-        console.log(newMessage)
+        navigate("/home");
       })
       .catch((error) => {
         console.log("Błąd",error)
       });
   };
   const goBack = () => {
-    navigate(-1);
+    navigate("/home");
   }
   return (
     <div className="newMessagePage">

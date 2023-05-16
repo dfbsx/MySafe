@@ -24,6 +24,7 @@ const goBack = () => {
             <MessageBox/>
             <MessageBox/>
           </div>
+          <p className='welcomeText'>Entropia</p>
           <p className='welcomeText'>Zestawienie algorytmów</p>
           <AlgoDesc/>
           <div className='algorithms'>

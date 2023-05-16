@@ -29,38 +29,28 @@ function LoginView() {
   const handleLogin = () => {
     login(loginData.login, loginData.password)
       .then((resp) => {
-        console.log(resp);
+        /*console.log(resp);
         localStorage.setItem(key,JSON.stringify({login:loginData.login,token:resp.data.access}));
         navigate("/home");
-        console.log(loginData.login,loginData.password)
+        console.log(loginData.login,loginData.password)*/
+        const cookies = resp;
+        console.log("Tutaj then",cookies)
+        
+
+    // Zapisz ciasteczka w przeglądarce
+    document.cookie = cookies;
+
+    // Wyświetl zapisane ciasteczka
+    console.log('Zapisane ciasteczka:', document.cookie);
+
+    localStorage.setItem(key,JSON.stringify({login:loginData.login,cookie:document.cookie}));
+    navigate("/home");
       })
       .catch((error) => {
-        //alert("Wprowadzone dane są niepoprawne");
         setLoginError(true);
         console.log("Błąd",error)
       });
   };
-
-  /*useEffect(()=>{
-    if(user.login === "user" && user.password === "haslo"){
-      setRedirect(true);
-      setLoginError(false);
-    }
-    else{
-      setRedirect(false);
-    }
-  },[user])*/
-
-  /*const handleLogin = () => {
-    if(user.login === "user" && user.password === "haslo"){
-      console.log(redirect); console.log(user.login);console.log(user.password)
-    }
-    else{
-      console.log(redirect);console.log(user.login);console.log(user.password)
-      setLoginError(true);
-      setUser({...user, login:"",password:""})
-    }
-  }*/
 
   return (
     <nav className="loginView">

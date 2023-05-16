@@ -11,11 +11,10 @@ function RegisterView() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    //const token = JSON.parse(localStorage.getItem(key)).token;
-    //console.log(token);
-    /*if (user?.token) {
+    const token = JSON.parse(localStorage.getItem(key)).token;
+    if (token) {
       navigate("/home");
-    }*/
+    }
   });
 
   const [registerData, setRegisterData] = useState({
@@ -33,7 +32,6 @@ function RegisterView() {
         navigate("/home");
       })
       .catch((error) => {
-        //alert("Wprowadzone dane są niepoprawne");
         console.log("Błąd",error);
       });
   };
