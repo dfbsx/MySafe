@@ -5,6 +5,7 @@
     padding: 32px;
     gap:16px;
     border-radius: 3px;
+    flex:1;
 }
 
 .messageBoxHeader{
@@ -20,4 +21,5 @@
 .messageText{
     margin: 0;
     font-size: 16px;
+    word-break: break-all;
 }

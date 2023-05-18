@@ -29,6 +29,7 @@
 
 .displayMessages{
     display: flex;
+    flex:1;
     gap:64px;
 }
 
