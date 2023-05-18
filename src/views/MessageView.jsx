@@ -1,12 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './MessageView.css';
 import Header from '../Components/Header';
 import { useNavigate } from 'react-router-dom';
 import MessageBox from '../Components/MessageBox';
 import AlgoDesc from '../Components/AlgoDesc';
 import AlgoTab from '../Components/AlgoTab';
+import { getSingleMessage } from '../crud/getSingleMessage';
 
 function MessageView() {
+useEffect(()=>{
+  const ls = JSON.parse(localStorage.getItem("messageId"));
+  console.log(ls.messageId)
+  getSingleMessage(ls.messageId)
+  .then((resp) => {
+    console.log("to resp",resp)
+  })
+  .catch((err) => {
+    console.log(err)
+  });
+},[])
 const [buttonVisible,setButtonVisible]=useState(true);
 const navigate = useNavigate();
 const goBack = () => {

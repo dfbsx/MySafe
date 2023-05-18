@@ -13,6 +13,7 @@ function MainPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [messagesList, setMessagesList] = useState([]);
+  const [date, setNewDate] = useState();
   useEffect(() => {
     const lsdata = JSON.parse(localStorage.getItem(key));
      if (lsdata?.cookie) {
@@ -59,9 +60,10 @@ function MainPage() {
   
 
   const [buttonVisible, setButtonVisible] = useState(true);
-  const Messages = messagesList?.map((item) => (
-    <MessageTab id={item.id} date="nienzana" title={item.subject} />
-  ))
+  const Messages = messagesList?.map((item) => 
+    {const d = new Date(item.sent_at);
+    return <MessageTab id={item.id} date={d.toLocaleString()} title={item.subject} />}
+)
   
 
   return (
@@ -70,7 +72,7 @@ function MainPage() {
       <div className="mainSite">
         <div className="pageHeader">
           <p className="welcomeText">
-            Witaj,&nbsp;<p className="username">{username}</p>! Sprawdź swoje
+            Witaj,&nbsp;<span className="username">{username}</span>! Sprawdź swoje
             wiadomości:
           </p>
           <Link to="/newMessage">

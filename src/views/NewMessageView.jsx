@@ -13,7 +13,6 @@ function NewMessageView() {
     if (!lsdata?.cookie) {
       navigate("/");
     }
-
   });
   const [buttonVisible, setButtonVisible] = useState(true);
   const [newMessage, setNewMessage] = useState({

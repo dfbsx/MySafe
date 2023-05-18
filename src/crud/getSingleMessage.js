@@ -4,6 +4,9 @@ import API_URL  from './config';
 export const getSingleMessage = (messageId) => {
   return axios({
     method: 'GET',
-    url: `${API_URL}/message/get/${messageId}`,
-  })
+    url: `${API_URL}/message/get/${messageId}/`,
+    headers: {
+      'Content-Type': 'application/json',
+    }
+  });
 };

@@ -22,3 +22,13 @@
 .emptyDesc{
     flex:1;
 }
+
+thead{
+    display: flex;
+    flex:1;
+}
+
+tr {
+    display: flex;
+    flex:1;
+}

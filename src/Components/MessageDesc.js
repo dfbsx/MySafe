@@ -4,11 +4,15 @@ import './MessageDesc.css';
 
 function MessageDesc() {
   return (
-    <div className='messageRowDesc'>
+    <table className='messageRowDesc'>
+      <thead>
+        <tr>
     <td className="tableDateDesc">Data</td>
     <td className="tableMessageTitleDesc">Tytuł</td>
     <td className="emptyDesc"></td>
-</div>
+    </tr>
+    </thead>
+</table>
   )
 }
 
