@@ -1,13 +1,13 @@
 import React from 'react'
 import './AlgoTab.css';
 
-function AlgoTab() {
+function AlgoTab({subject, body, encryptedBody,time,method,originalSize,size}) {
   return (
     <div className='algoRow'>
-        <td className='algoItem'>AES</td>
-        <td className='algoItem'>5 ms</td>
-        <td className='algoItem'>2.7 kB</td>
-        <td className='algoItem'>4 kB</td>
+        <td className='algoItem'>{method}</td>
+        <td className='algoItem'>{time}</td>
+        <td className='algoItem'>{originalSize}</td>
+        <td className='algoItem'>{size}</td>
     </div>
   )
 }

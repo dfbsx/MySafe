@@ -8,7 +8,7 @@ import AlgoTab from "../Components/AlgoTab";
 import { getSingleMessage } from "../crud/getSingleMessage";
 
 function MessageView() {
-  const [thisMessage, setThisMessage] = useState({});
+  const [allMessageTypes, setAllMessageTypes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const ls = JSON.parse(localStorage.getItem("messageId"));
@@ -17,12 +17,11 @@ function MessageView() {
     getSingleMessage(ls.messageId)
       .then((resp) => {
         console.log("to resp", resp);
-        setThisMessage(resp.data?.message);
-        console.log(resp?.data?.message?.encrypted_body);
-        console.log(thisMessage);
+        setAllMessageTypes([...resp.data?.messages]);
+        console.log("wiadomości", allMessageTypes);
       })
       .catch((err) => {
-        console.log(err);
+        console.log("Error", err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -34,34 +33,46 @@ function MessageView() {
   const goBack = () => {
     navigate(-1);
   };
+
+  /*const Messages = messagesList?.map((item) => 
+    {const d = new Date(item.sent_at);
+    return <MessageTab id={item.id} date={d.toLocaleString()} title={item.subject} />}
+)*/
+
+const DisplayMessagesVariants = allMessageTypes?.map((item) => 
+  <AlgoTab
+    subject={item.subject}
+    body={item.body}
+    encryptedBody={item.encryptedBody}
+    time={item.decode_time}
+    method={item.encryption_method}
+    originalSize={item.original_size}
+    size={item.encryption_size}
+  />
+);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     <div className="messageView">
       <Header buttonVisible={buttonVisible} />
       <div className="messageSite">
         <div className="pageDesc">
-          <p className="welcomeText">{thisMessage.subject}</p>
+          <p className="welcomeText"></p>
           <p className="returnText" onClick={goBack}>
             Wróć do strony głównej
           </p>
         </div>
         <div className="displayMessages">
-          <MessageBox isEncrypted={false} body={thisMessage.body} />
-          <MessageBox isEncrypted={true} body={thisMessage.encrypted_body} />
+          {/* <MessageBox isEncrypted={false} body={thisMessage.body} />
+          <MessageBox isEncrypted={true} body={thisMessage.encrypted_body} />*/}
         </div>
-        <p className="welcomeText">Entropia: {thisMessage.entropy}</p>
+        <p className="welcomeText">Entropia: {/*thisMessage.entropy}*/}</p>
         <p className="welcomeText">Zestawienie algorytmów</p>
         <AlgoDesc />
-        <div className="algorithms">
-          <AlgoTab />
-          <AlgoTab />
-          <AlgoTab />
-          <AlgoTab />
-          <AlgoTab />
-          <AlgoTab />
-        </div>
+        <div className="algorithms">{DisplayMessagesVariants}</div>
       </div>
     </div>
   );
