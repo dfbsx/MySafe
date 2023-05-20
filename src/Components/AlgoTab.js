@@ -1,14 +1,21 @@
-import React from 'react'
+import React,{useState} from 'react'
 import './AlgoTab.css';
 
-function AlgoTab({subject, body, encryptedBody,time,method,originalSize,size}) {
+function AlgoTab({time,method,originalSize,size,id,index,setMessKey,messageKey}) {
+  const currMess = () => {
+    setMessKey(index);
+    console.log(index);
+    console.log(messageKey)
+  }
   return (
-    <div className='algoRow'>
+    <thead onClick={()=>currMess()}>
+    <tr style={{backgroundColor: messageKey===index?"#D5ECFF":null}} className='algoRow'>
         <td className='algoItem'>{method}</td>
         <td className='algoItem'>{time}</td>
         <td className='algoItem'>{originalSize}</td>
         <td className='algoItem'>{size}</td>
-    </div>
+    </tr>
+    </thead>
   )
 }
 

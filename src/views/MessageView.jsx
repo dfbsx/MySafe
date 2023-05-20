@@ -9,16 +9,15 @@ import { getSingleMessage } from "../crud/getSingleMessage";
 
 function MessageView() {
   const [allMessageTypes, setAllMessageTypes] = useState([]);
+  const [messageKey, setMessageKey] = useState(0);
+  const [currentMessage, setCurrentMessage] = useState();
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const ls = JSON.parse(localStorage.getItem("messageId"));
-    console.log(ls.messageId);
     setIsLoading(true);
     getSingleMessage(ls.messageId)
       .then((resp) => {
-        console.log("to resp", resp);
         setAllMessageTypes([...resp.data?.messages]);
-        console.log("wiadomości", allMessageTypes);
       })
       .catch((err) => {
         console.log("Error", err);
@@ -27,6 +26,13 @@ function MessageView() {
         setIsLoading(false);
       });
   }, []);
+
+  useEffect(() => {
+    if (allMessageTypes.length > 0) {
+      setCurrentMessage(allMessageTypes[messageKey]);
+    }
+  }, [allMessageTypes, messageKey]);
+
   const [isEncrypted, setIsEncrypted] = useState();
   const [buttonVisible, setButtonVisible] = useState(true);
   const navigate = useNavigate();
@@ -34,22 +40,21 @@ function MessageView() {
     navigate(-1);
   };
 
-  /*const Messages = messagesList?.map((item) => 
-    {const d = new Date(item.sent_at);
-    return <MessageTab id={item.id} date={d.toLocaleString()} title={item.subject} />}
-)*/
-
-const DisplayMessagesVariants = allMessageTypes?.map((item) => 
-  <AlgoTab
-    subject={item.subject}
-    body={item.body}
-    encryptedBody={item.encryptedBody}
-    time={item.decode_time}
-    method={item.encryption_method}
-    originalSize={item.original_size}
-    size={item.encryption_size}
-  />
-);
+  const DisplayMessagesVariants = allMessageTypes?.map((item, index) => (
+    <AlgoTab
+      key={index}
+      setMessKey={setMessageKey}
+      messageKey={messageKey}
+      index={index}
+      subject={item.subject}
+      body={item.body}
+      encryptedBody={item.encryptedBody}
+      time={item.decode_time}
+      method={item.encryption_method}
+      originalSize={item.original_size}
+      size={item.encryption_size}
+    />
+  ));
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -60,19 +65,36 @@ const DisplayMessagesVariants = allMessageTypes?.map((item) =>
       <Header buttonVisible={buttonVisible} />
       <div className="messageSite">
         <div className="pageDesc">
-          <p className="welcomeText"></p>
-          <p className="returnText" onClick={goBack}>
-            Wróć do strony głównej
-          </p>
+          {currentMessage ? (
+            <>
+              <p className="welcomeText">{currentMessage.subject}</p>
+              <p className="returnText" onClick={goBack}>
+                Wróć do strony głównej
+              </p>
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
         <div className="displayMessages">
-          {/* <MessageBox isEncrypted={false} body={thisMessage.body} />
-          <MessageBox isEncrypted={true} body={thisMessage.encrypted_body} />*/}
+          {currentMessage ? (
+            <>
+              <MessageBox isEncrypted={false} body={currentMessage.body} />
+              <MessageBox
+                isEncrypted={true}
+                body={currentMessage.encrypted_body}
+              />
+            </>
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
-        <p className="welcomeText">Entropia: {/*thisMessage.entropy}*/}</p>
+        <p className="welcomeText">Entropia:{currentMessage && currentMessage.entropy} </p>
         <p className="welcomeText">Zestawienie algorytmów</p>
-        <AlgoDesc />
-        <div className="algorithms">{DisplayMessagesVariants}</div>
+        <table className="messagesTable">
+          <AlgoDesc />
+        </table>
+        <table className="algorithms">{DisplayMessagesVariants}</table>
       </div>
     </div>
   );
