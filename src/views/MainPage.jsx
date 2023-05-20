@@ -62,7 +62,7 @@ function MainPage() {
   const [buttonVisible, setButtonVisible] = useState(true);
   const Messages = messagesList?.map((item) => 
     {const d = new Date(item.sent_at);
-    return <MessageTab id={item.id} date={d.toLocaleString()} title={item.subject} />}
+    return <MessageTab key={item.id} date={d.toLocaleString()} title={item.subject} />}
 )
   
 
