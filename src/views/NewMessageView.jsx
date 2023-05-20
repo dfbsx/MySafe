@@ -8,12 +8,6 @@ import key from '../const'
 
 function NewMessageView() {
   const navigate = useNavigate();
-  useEffect(() => {
-    const lsdata = JSON.parse(localStorage.getItem(key));
-    if (!lsdata?.cookie) {
-      navigate("/");
-    }
-  });
   const [buttonVisible, setButtonVisible] = useState(true);
   const [newMessage, setNewMessage] = useState({
     title: "",

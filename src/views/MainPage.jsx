@@ -13,51 +13,18 @@ function MainPage() {
   const navigate = useNavigate();
   const [username, setUsername] = useState();
   const [messagesList, setMessagesList] = useState([]);
-  const [date, setNewDate] = useState();
   useEffect(() => {
     const lsdata = JSON.parse(localStorage.getItem(key));
-     if (lsdata?.cookie) {
-      navigate("/home");
       getMessagesList()
       .then((resp) => {
         console.log("to resp",resp)
         setMessagesList([...resp.data])
-        //resp.data.map((item)=> {console.log(item); setMessagesList({...messagesList,item})});
       })
       .catch((err) => {
         console.log(err)
       });
-    } else {
-      navigate("/");
-    }
     setUsername(lsdata?.login);
-    //console.log("Lista",messagesList)
-   /* var url = "http://localhost:8000/message/list"; // Adres docelowy*/
-    //var token = `"${lsdata.token}"`;
-    /*fetch(url, {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Błąd sieciowy: " + response.status);
-        }
-      })
-      .then(function (data) {
-        console.log(data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });*/
-      //getMessagesList().then(data=>console.log("MainPage",data))
   }, []);
-
-  
 
   const [buttonVisible, setButtonVisible] = useState(true);
   const Messages = messagesList?.map((item) => 
@@ -65,7 +32,6 @@ function MainPage() {
     return <MessageTab key={item.id} id={item.id} date={d.toLocaleString()} title={item.subject} />}
 )
   
-
   return (
     <div className="mainPage">
       <Header buttonVisible={buttonVisible} />
