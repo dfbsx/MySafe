@@ -38,6 +38,7 @@ function RegisterView() {
           key,
           JSON.stringify({ login: registerData.login, cookie: document.cookie })
         );
+        setRedirect(true);
         navigate("/home");
       })
       .catch((error) => {
@@ -84,7 +85,7 @@ function RegisterView() {
           />
           <p className="noAccount">
             Masz już konto? &nbsp;
-            <Link to="/login">
+            <Link to="/">
               <strong>Zaloguj się</strong>
             </Link>
           </p>

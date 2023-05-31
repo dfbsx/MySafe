@@ -15,7 +15,7 @@ function LoginView() {
     if (lsdata?.token) {
       navigate("/home");
     }
-  });
+  },[]);
 
   const [loginData, setLoginData] = useState({
     login: "",

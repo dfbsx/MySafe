@@ -6,6 +6,7 @@ import key from '../const'
 function Header({buttonVisible}) {
   const logout = () => {
     localStorage.removeItem(key);
+    localStorage.removeItem("isLoggedIn");
   };
   return (
     <div className="headerBackground">

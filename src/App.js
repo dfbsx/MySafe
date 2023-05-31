@@ -17,10 +17,16 @@ function App() {
     const lsdata = JSON.parse(localStorage.getItem(key));
     if (lsdata?.login) {
       setisLoggedIn(true);
+      console.log("tak")
     } else {
       setisLoggedIn(false);
+      console.log("nie")
     }
-  }, []);
+    localStorage.setItem(
+      "isLoggedIn",
+      JSON.stringify(isLoggedIn)
+    );
+  }, [isLoggedIn]);
 
   return (
     <div className="App">
