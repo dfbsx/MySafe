@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     setupAxios();
     const lsdata = JSON.parse(localStorage.getItem(key));
-    if (lsdata?.cookie) {
+    if (lsdata?.login) {
       setisLoggedIn(true);
     } else {
       setisLoggedIn(false);
@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<LoginView />} />
-            <Route path="register" element={<Protected isLoggedIn={isLoggedIn}> <RegisterView /></Protected>} />
+            <Route path="register" element={<RegisterView />} />
             <Route path="home" element={<Protected isLoggedIn={isLoggedIn}> <MainPage /> </Protected>} />
             <Route path="newMessage" element={<Protected isLoggedIn={isLoggedIn}> <NewMessageView /></Protected>} />
             <Route path="home/messages/:messagesId" element={<Protected isLoggedIn={isLoggedIn}> <MessageView /></Protected>} />

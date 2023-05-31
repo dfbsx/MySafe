@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import "./RegisterView.css";
 import LoginInput from "../Components/LoginInput";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { register } from "../crud/register";
-import key from '../const'
+import key from "../const.js";
 
 function RegisterView() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem(key)).token;
-    if (token) {
+    const lsdata = JSON.parse(localStorage.getItem(key));
+    if (lsdata?.token) {
       navigate("/home");
     }
   });
@@ -20,28 +20,44 @@ function RegisterView() {
   const [registerData, setRegisterData] = useState({
     login: "",
     password: "",
-    repeatedPassword: "",
+    repeatedPassword:"",
   });
 
+  const [redirect, setRedirect] = useState(false);
+
+  const [loginError, setLoginError] = useState(false);
+
   const handleRegister = () => {
-    console.log(registerData)
-    register(registerData.login,registerData.password,registerData.repeatedPassword)
+    register(registerData.login, registerData.password, registerData.repeatedPassword)
       .then((resp) => {
-        console.log("resp",resp);
-        localStorage.setItem(key, JSON.stringify({login:resp.data.username,token:resp.data.access}))
+        const cookies = resp;
+        console.log("Tutaj then", cookies);
+        document.cookie = cookies;
+        console.log("Zapisane ciasteczka:", document.cookie);
+        localStorage.setItem(
+          key,
+          JSON.stringify({ login: registerData.login, cookie: document.cookie })
+        );
         navigate("/home");
       })
       .catch((error) => {
-        console.log("Błąd",error);
+        setLoginError(true);
+        console.log("Błąd", error);
       });
   };
 
   return (
-    <div className="registerView">
+    <nav className="registerView">
       <Header />
       <div className="registerSite">
-        <form className="registerForm">
+        <form
+          className="registerForm"
+          onSubmit={(event) => event.preventDefault()}
+        >
           <p className="registerInto">Zarejestruj się</p>
+          {loginError === true ? (
+            <p className="loginError">Niepoprawne dane</p>
+          ) : null}
           <LoginInput
             inputText="Login"
             type="text"
@@ -58,7 +74,7 @@ function RegisterView() {
               setRegisterData({ ...registerData, password: e.target.value })
             }
           />
-          <LoginInput
+           <LoginInput
             inputText="Powtórz hasło"
             type="password"
             value={registerData.repeatedPassword}
@@ -66,14 +82,28 @@ function RegisterView() {
               setRegisterData({ ...registerData, repeatedPassword: e.target.value })
             }
           />
-          <Link to="/home">
-            <button className="loginButton" onClick={handleRegister}>
-              ZAREJESTRUJ
-            </button>
-          </Link>
+          <p className="noAccount">
+            Masz już konto? &nbsp;
+            <Link to="/login">
+              <strong>Zaloguj się</strong>
+            </Link>
+          </p>
+          {redirect === true ? (
+            <Link to="/home">
+              <button className="registerButton" onClick={handleRegister}>
+                Zarejestruj
+              </button>
+            </Link>
+          ) : (
+            <Link to="/register">
+              <button className="registerButton" onClick={handleRegister}>
+                Zarejestruj
+              </button>
+            </Link>
+          )}
         </form>
       </div>
-    </div>
+    </nav>
   );
 }
 

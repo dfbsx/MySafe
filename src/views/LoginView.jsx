@@ -5,7 +5,7 @@ import LoginInput from "../Components/LoginInput";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { login } from "../crud/login";
-import key from "../const.js"
+import key from "../const.js";
 
 function LoginView() {
   const navigate = useNavigate();
@@ -29,26 +29,19 @@ function LoginView() {
   const handleLogin = () => {
     login(loginData.login, loginData.password)
       .then((resp) => {
-        /*console.log(resp);
-        localStorage.setItem(key,JSON.stringify({login:loginData.login,token:resp.data.access}));
-        navigate("/home");
-        console.log(loginData.login,loginData.password)*/
         const cookies = resp;
-        console.log("Tutaj then",cookies)
-        
-
-    // Zapisz ciasteczka w przeglądarce
-    document.cookie = cookies;
-
-    // Wyświetl zapisane ciasteczka
-    console.log('Zapisane ciasteczka:', document.cookie);
-
-    localStorage.setItem(key,JSON.stringify({login:loginData.login,cookie:document.cookie}));
-    navigate("/home");
+        console.log("Tutaj then", cookies);
+        document.cookie = cookies;
+        console.log("Zapisane ciasteczka:", document.cookie);
+        localStorage.setItem(
+          key,
+          JSON.stringify({ login: loginData.login, cookie: document.cookie })
+        );
+        navigate("/home");
       })
       .catch((error) => {
         setLoginError(true);
-        console.log("Błąd",error)
+        console.log("Błąd", error);
       });
   };
 
@@ -68,7 +61,9 @@ function LoginView() {
             inputText="Login"
             type="text"
             value={loginData.login}
-            onChange={(e) => setLoginData({ ...loginData, login: e.target.value })}
+            onChange={(e) =>
+              setLoginData({ ...loginData, login: e.target.value })
+            }
           />
           <LoginInput
             inputText="Hasło"

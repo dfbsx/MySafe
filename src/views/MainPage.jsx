@@ -24,7 +24,7 @@ function MainPage() {
         console.log(err)
       });
     setUsername(lsdata?.login);
-  }, []);
+  }, [username]);
 
   const [buttonVisible, setButtonVisible] = useState(true);
   const Messages = messagesList?.map((item) => 
