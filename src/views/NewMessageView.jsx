@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 import "./NewMessageView.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BsSave } from "react-icons/bs";
 import { createMessage } from "../crud/createMessage";
-import key from '../const'
 
 function NewMessageView() {
   const navigate = useNavigate();
@@ -14,20 +13,17 @@ function NewMessageView() {
     text: "",
   });
   const addMessage = () => {
-    console.log(newMessage.title)
-    console.log(newMessage.text)
-    createMessage(newMessage.title,newMessage.text)
+    createMessage(newMessage.title, newMessage.text)
       .then((resp) => {
-        console.log(resp);
         navigate("/home");
       })
       .catch((error) => {
-        console.log("Błąd",error)
+        console.log("Błąd", error);
       });
   };
   const goBack = () => {
     navigate("/home");
-  }
+  };
   return (
     <div className="newMessagePage">
       <Header buttonVisible={buttonVisible} />
@@ -39,17 +35,20 @@ function NewMessageView() {
           </p>
         </div>
         <p>Tytuł wiadomości:</p>
-        <input className="messageTitle" 
-        value={newMessage.title}
-        onChange={(e) =>
-          setNewMessage({ ...newMessage, title: e.target.value })
-        }/>
+        <input
+          className="messageTitle"
+          value={newMessage.title}
+          onChange={(e) =>
+            setNewMessage({ ...newMessage, title: e.target.value })
+          }
+        />
         <p>Treść wiadomości:</p>
-        <textarea className="messageText"
-        value={newMessage.text}
-        onChange={(e) =>
-          setNewMessage({ ...newMessage, text: e.target.value })
-        }
+        <textarea
+          className="messageText"
+          value={newMessage.text}
+          onChange={(e) =>
+            setNewMessage({ ...newMessage, text: e.target.value })
+          }
         ></textarea>
         <button className="saveMessage" onClick={addMessage}>
           <BsSave />
