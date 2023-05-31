@@ -15,31 +15,37 @@ function MainPage() {
   const [messagesList, setMessagesList] = useState([]);
   useEffect(() => {
     const lsdata = JSON.parse(localStorage.getItem(key));
-      getMessagesList()
+    getMessagesList()
       .then((resp) => {
-        console.log("to resp",resp)
-        setMessagesList([...resp.data])
+        setMessagesList([...resp.data]);
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
       });
     setUsername(lsdata?.login);
   }, [username]);
 
   const [buttonVisible, setButtonVisible] = useState(true);
-  const Messages = messagesList?.map((item) => 
-    {const d = new Date(item.sent_at);
-    return <MessageTab key={item.id} id={item.id} date={d.toLocaleString()} title={item.subject} />}
-)
-  
+  const Messages = messagesList?.map((item) => {
+    const d = new Date(item.sent_at);
+    return (
+      <MessageTab
+        key={item.id}
+        id={item.id}
+        date={d.toLocaleString()}
+        title={item.subject}
+      />
+    );
+  });
+
   return (
     <div className="mainPage">
       <Header buttonVisible={buttonVisible} />
       <div className="mainSite">
         <div className="pageHeader">
           <p className="welcomeText">
-            Witaj,&nbsp;<span className="username">{username}</span>! Sprawdź swoje
-            wiadomości:
+            Witaj,&nbsp;<span className="username">{username}</span>! Sprawdź
+            swoje wiadomości:
           </p>
           <Link to="/newMessage">
             <button className="addMessage">
@@ -50,7 +56,7 @@ function MainPage() {
         </div>
         <div className="messagesTable">
           <MessageDesc />
-            {Messages}
+          {Messages}
         </div>
       </div>
     </div>

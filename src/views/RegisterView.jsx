@@ -20,7 +20,7 @@ function RegisterView() {
   const [registerData, setRegisterData] = useState({
     login: "",
     password: "",
-    repeatedPassword:"",
+    repeatedPassword: "",
   });
 
   const [redirect, setRedirect] = useState(false);
@@ -28,12 +28,16 @@ function RegisterView() {
   const [loginError, setLoginError] = useState(false);
 
   const handleRegister = () => {
-    register(registerData.login, registerData.password, registerData.repeatedPassword)
+    register(
+      registerData.login,
+      registerData.password,
+      registerData.repeatedPassword
+    )
       .then((resp) => {
         const cookies = resp;
-        console.log("Tutaj then", cookies);
+
         document.cookie = cookies;
-        console.log("Zapisane ciasteczka:", document.cookie);
+
         localStorage.setItem(
           key,
           JSON.stringify({ login: registerData.login, cookie: document.cookie })
@@ -75,12 +79,15 @@ function RegisterView() {
               setRegisterData({ ...registerData, password: e.target.value })
             }
           />
-           <LoginInput
+          <LoginInput
             inputText="Powtórz hasło"
             type="password"
             value={registerData.repeatedPassword}
             onChange={(e) =>
-              setRegisterData({ ...registerData, repeatedPassword: e.target.value })
+              setRegisterData({
+                ...registerData,
+                repeatedPassword: e.target.value,
+              })
             }
           />
           <p className="noAccount">

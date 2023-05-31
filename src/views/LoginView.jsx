@@ -15,7 +15,7 @@ function LoginView() {
     if (lsdata?.token) {
       navigate("/home");
     }
-  },[]);
+  }, []);
 
   const [loginData, setLoginData] = useState({
     login: "",
@@ -30,9 +30,7 @@ function LoginView() {
     login(loginData.login, loginData.password)
       .then((resp) => {
         const cookies = resp;
-        console.log("Tutaj then", cookies);
         document.cookie = cookies;
-        console.log("Zapisane ciasteczka:", document.cookie);
         localStorage.setItem(
           key,
           JSON.stringify({ login: loginData.login, cookie: document.cookie })
@@ -41,7 +39,6 @@ function LoginView() {
       })
       .catch((error) => {
         setLoginError(true);
-        console.log("Błąd", error);
       });
   };
 

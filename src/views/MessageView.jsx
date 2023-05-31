@@ -33,7 +33,6 @@ function MessageView() {
     }
   }, [allMessageTypes, messageKey]);
 
-  const [isEncrypted, setIsEncrypted] = useState();
   const [buttonVisible, setButtonVisible] = useState(true);
   const navigate = useNavigate();
   const goBack = () => {
@@ -89,7 +88,9 @@ function MessageView() {
             <p>Loading...</p>
           )}
         </div>
-        <p className="welcomeText">Entropia:{currentMessage && currentMessage.entropy} </p>
+        <p className="welcomeText">
+          Entropia:{currentMessage && currentMessage.entropy}{" "}
+        </p>
         <p className="welcomeText">Zestawienie algorytmów</p>
         <table className="messagesTable">
           <AlgoDesc />
