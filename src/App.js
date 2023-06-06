@@ -33,8 +33,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<LoginView />} />
-            <Route path="register" element={<RegisterView />} />
+            <Route index element={<LoginView setisLoggedIn={setisLoggedIn}/>} />
+            <Route path="register" element={<RegisterView setisLoggedIn={setisLoggedIn}/>} />
             <Route path="home" element={<Protected isLoggedIn={isLoggedIn}> <MainPage /> </Protected>} />
             <Route path="newMessage" element={<Protected isLoggedIn={isLoggedIn}> <NewMessageView /></Protected>} />
             <Route path="home/messages/:messagesId" element={<Protected isLoggedIn={isLoggedIn}> <MessageView /></Protected>} />

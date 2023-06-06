@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { register } from "../crud/register";
 import key from "../const.js";
 
-function RegisterView() {
+function RegisterView({setisLoggedIn}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,11 +43,13 @@ function RegisterView() {
           JSON.stringify({ login: registerData.login, cookie: document.cookie })
         );
         setRedirect(true);
+        setisLoggedIn(true);
         navigate("/home");
       })
       .catch((error) => {
         setLoginError(true);
         console.log("Błąd", error);
+        setisLoggedIn(false);
       });
   };
 

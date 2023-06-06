@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { login } from "../crud/login";
 import key from "../const.js";
 
-function LoginView() {
+function LoginView({setisLoggedIn}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,10 +35,12 @@ function LoginView() {
           key,
           JSON.stringify({ login: loginData.login, cookie: document.cookie })
         );
+        setisLoggedIn(true);
         navigate("/home");
       })
       .catch((error) => {
         setLoginError(true);
+        setisLoggedIn(false);
       });
   };
 
